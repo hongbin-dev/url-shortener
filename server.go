@@ -9,7 +9,7 @@ import (
 func main() {
 	e := echo.New()
 
-	db, err := mgo.Dial("mongodb://root:1234@localhost:27017")
+	db, err := mgo.Dial("mongodb://root:1234@mongodb:27017")
 	if err != nil {
 		e.Logger.Fatal(err)
 	}
