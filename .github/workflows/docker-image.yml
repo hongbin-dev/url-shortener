@@ -4,12 +4,18 @@ on:
   workflow_dispatch:
     inputs:
       environment:
-        description: '환경 선택'
-        required: true
-        default: 'development'
+        type: environment
+        description: Select the environment
+      boolean:
+        type: boolean
+        description: True or False
+      choice:
+        type: choice
+        description: Make a choice
         options:
-          - development
-          - production
+        - foo
+        - bar
+        - baz
 
 jobs:
   build:
