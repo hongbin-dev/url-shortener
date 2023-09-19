@@ -1,15 +1,23 @@
 name: Docker Image CI
 
 on:
-  workflow_dispatch
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: '환경 선택'
+        required: true
+        default: 'development'
+        options:
+          - development
+          - production
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
+  
     steps:
+    - name: 설정 값 출력
+      run: echo "선택된 환경 ${{ github.event.inputs.environment }}"
     - uses: actions/checkout@v3
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
